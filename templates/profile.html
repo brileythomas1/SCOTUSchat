@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<!--If the profile the current user wants to view is their own, display "Your Profile"-->
+    {% if flag == True %}
+    Your Profile
+    {% else %}
+<!--If the profile the current user wants to view isn't their own, display it as the profile of that user's username-->
+   {{ username }}'s Profile
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+<h2>{% if flag == True %}
+    Your Profile
+    {% else %}
+   {{ username }}'s Profile
+    {% endif %} Profile</h2>
+
+<!--Table of info about the user-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Profile Picture</th>
+            <th>Username</th>
+            <th>User ID</th>
+            <th>Moderator</th>
+            <th>Biography</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--Row contains user's profile picture, username, id, moderator status, and biography-->
+        <tr>
+
+            <!--Image is set to be 150x150 and sourced from the path the profile picture is in-->
+            <td><img src="../{{ pfp }}" alt="{{ username }}'s profile picture" width="150" height="150"></td>
+            <td>{{ username }}</b></a></td>
+            <td>{{ id }}</td>
+
+            <!--Display more user-friendly "Yes" or "No" instead of unfriendly "1" or "0" boolean values-->
+            {% if moderator == True %}
+            <td>Yes</td>
+            {% else %}
+            <td>No</td>
+            {% endif %}
+            <td>{{ bio }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>{% if flag == True %}
+    Posts Made By You
+    {% else %}
+    Posts Made By {{ username }}
+    {% endif %}</h2>
+
+<!-- Displays all posts the user this profile belongs to has made-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>User</th>
+            <th>Timestamp</th>
+            <th>Number of Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in user_posts %}
+        <tr>
+            <td><a href="/view/{{ post.post_id }}"><b>{{ post.title }}</b></a></td>
+            <td><a href="/profile/{{ post.user_id }}">{{ post.username }}</a></td>
+            <td>{{ post.timestamp }}</td>
+            <td>{{ post.count_comments }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!--If this is the current user's own profile, allow them to update their biography and profile picture-->
+{% if flag == True %}
+<h2>Update Bio</h2>
+<form action="/profile/{{ id }}" method="post">
+    <div class="mb-3">
+        <textarea autocomplete="off" rows="5" cols="80" autofocus class="form-control mx-auto w-auto" id="bio" name="bio" placeholder="Biography" type="text"></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Save Bio</button>
+</form>
+<br>
+<button><a href="/update_pfp">Update Profile Picture</button>
+{% endif %}
+{% endblock %}

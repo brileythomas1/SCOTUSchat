@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<p>
+    Upload your profile picture below. NOTE: Image must be a .png, .jpg, or .jpeg file and can be removed at moderators' discretion.
+</p>
+    <!--Adds enctype attribute to form for image upload-->
+    <form action="/update_pfp" method="post" enctype = "multipart/form-data">
+        <!-- Prompts user to upload .png, .jpeg, or .jpg file to set as their profile picture -->
+        <input type = "file" name = "file" accept=".png, .jpeg, .jpg"/>
+        <input type = "submit"/>
+    </form>
+{% endblock %}

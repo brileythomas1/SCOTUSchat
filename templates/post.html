@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Make a Post
+{% endblock %}
+
+{% block main %}
+<p>
+    Enter your post below.
+</p>
+    <!-- Add "enctype" attribute to upload files-->
+    <form action="/post" method="post" enctype="multipart/form-data">
+        
+        <!-- Prompts user for post title in textbox-->
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="title" name="title" placeholder="Enter title here" type="text" size="40">
+        </div>
+
+        <!-- Prompts user for post message in a large textbox-->
+        <div class="mb-3">
+            <textarea autocomplete="off" rows="5" cols="80" class="form-control mx-auto w-auto" id="message" name="message" placeholder="Enter contents here" type="text" size="60"></textarea>
+        </div>
+        <p>Upload an image below. NOTE: .png, .jpeg, and .jpg files accepted only. 2 MB file size limit. Images can be removed at any time at moderators' discretion.</p>
+
+        <!--Prompts user to upload a file with a .png, .jpeg, or .jpg extension-->
+        <div>
+            <input type = "file" name = "post_file" accept=".png, .jpeg, .jpg"/>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit Post</button>
+    </form>
+
+{% endblock %}

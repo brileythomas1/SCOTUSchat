@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    About the Supreme Court
+{% endblock %}
+
+{% block main %}
+    <!-- Info about the Supreme Court-->
+    <h2>About the Supreme Court</h2>
+    <p> The United States Supreme Court is the highest federal court in the United States. In court cases that have considerable importance
+        on the way that Americans live, the Supreme Court intervenes based on the principles of the Constitution.
+    </p>
+    <p>
+        Justices are appointed by the President of the United States and confirmed by the U.S. Senate.
+        The Court currently consists of nine justices: one chief justice and eight associate justices. The current composition of the
+        court is: Chief Justice John Roberts, Associate Justice Sonia Sotomayor, Associate Justice Clarence Thomas, Associate Justice Amy
+        Coney Barrett, Associate Justice Brett Kavanaugh, Associate Justice Elena Kagan, Associate Justice Ketanji Brown Jackson, Associate Justice
+        Samuel Alito, and Associate Justice Neil Gorsuch.
+    </p>
+    <p>
+        The Supreme Court decides on issues of public importance that set a precedence
+        throughout the nation. These issues include gun rights, abortion, affirmative action, voting rights, and many, many more.
+    </p>
+
+    <!-- Info about myself -->
+    <h2>About the Creator</h2>
+    <p>My name is Briley Thomas, and I am a first-year at Yale College tentatively planning to study Computer Science and History.
+        This website was made as my final project for the course CS50, an introductory computer science class co-taught by Harvard
+        and Yale. The Supreme Court has always been a very interesting institution to me. It operates mostly outside of the public view yet
+        has incredible influence on the way Americans live and interact. I wanted to shed light on the activities of this important institution
+        with a website dedicated to its activities, fostering insightful discussion and informing visitors in the process. I sincerely hope
+        you enjoy what I have created.
+    </p>
+    <!-- Info about the website-->
+    <h2>About the Website</h2>
+    <p>
+        This website is built using Flask and Python. It consists of a few main components. First and foremost is a discussion
+        forum, where users are able to make posts about topics pertaining to the Supreme Court. Users can also make replies to
+        posts. Users can delete their own posts and comments, and there is additionally support for moderators: users given special access
+        through the backend to delete any posts or comments. This is incredibly important in a forum that is inherently political and thus
+        has a high chance of potential conflict. Users can also view each other's profiles and set their own profile pictures and biographies
+        for other users to read.
+    </p>
+    <p>
+        Second is a news section. Here, users can look at recent news pertaining to the Court from a diverse array of news sources.
+    </p>
+    <p>
+        Third is a calendar where users can see upcoming cases and decisions. This is through SCOTUSblog.com.
+    </p>
+    <p>
+        Lastly is a feedback form where users can submit feedback to the creators of the website (me) regarding suggestions or
+        potential changes.
+    </p>
+    <p>
+        Much of this website's code is derived from that built by CS50 staff in Problem Set 9 of the course (Finance)
+        as well as my own work from Problem Set 9. This includes the account system (logging in, logging out, user registration, changing password)
+        and much of the CSS and HTML. I give all credit to CS50 staff for building these parts of the code.
+    </p>
+{% endblock %}

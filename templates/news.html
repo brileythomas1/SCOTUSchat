@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    News
+{% endblock %}
+
+{% block main %}
+<!--Embeds RSS feed of Google News into page-->
+<script src="//rss.bloople.net/?url=https%3A%2F%2Fnews.google.com%2Frss%2Ftopics%2FCAAqIQgKIhtDQkFTRGdvSUwyMHZNRGR6ZWpFU0FtVnVLQUFQAQ%3Fhl%3Den-US%26gl%3DUS%26ceid%3DUS%253Aen&showtitle=false&type=js"></script>
+<p>
+    Made using rss.bloople.net and Google News
+</p>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Forum
+{% endblock %}
+
+{% block main %}
+<h2>Input a search for a post title or message below.</h2>
+<form action="/search" method="post">
+    <!--Prompts user to search for a post by inputing a term in textbox-->
+    <input type="text" name="search" placeholder="Search..">
+    <button class="btn btn-primary" type="submit">Submit Post</button>
+</form>
+{% endblock %}

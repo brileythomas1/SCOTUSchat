@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<p>
+    Please enter a new password of at least eight characters.
+</p>
+    <form action="/change" method="post">
+        <!-- Gets old password from user-->
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="old_password" placeholder="Old Password" type="password">
+        </div>
+        <!-- Gets new password from user-->
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="new_password" placeholder="New Password" type="password">
+        </div>
+        <!-- Prompts user to reenter new password -->
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="confirmation" name="new_confirmation" placeholder="Confirm New Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+{% endblock %}

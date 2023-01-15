@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Post
+{% endblock %}
+
+{% block main %}
+<!-- The HTML/CSS on this page is derived from a Bootstrap template found here: https://www.bootdey.com/snippets/view/bs4-beta-comment-list -->
+<h2>Post: {{ title }}</h2>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<div class="container">
+<div class="row">
+    <div class="col-md-8">
+        <div class="media g-mb-30 media-comment">
+
+            <!-- Displays user's profile picture-->
+            <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="../{{ pfp }}" alt="{{ username }}'s profile picture" width="300" height="300">
+            <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+              <div class="g-mb-15">
+
+                <!-- Displays user's username and time-->
+                <h5 class="h5 g-color-gray-dark-v1 mb-0"><a href="/profile/{{ user_id }}">{{ username }}</a></h5>
+                <span class="g-color-gray-dark-v4 g-font-size-12">{{ time }}</span>
+              </div>
+
+              <!-- Display user's message-->
+              <p>{{ message }}</p>
+
+              <!-- If the user inputted an image, embed the image in the post-->
+              {% if image != "0" %}
+              <div class="image"><img src="../{{ image }}" alt="An image on SCOTUSchat" width="300"></div>
+              {% endif %}
+
+              <!-- If this is the user's own post, display a button allowing them to delete the post-->
+              {% if del_check == True %}
+                <form action="/delete/{{ id }}" method="post">
+                <button class="btn btn-primary" type="submit">Delete Post</button>
+                </form>
+              {% endif %}
+            </div>
+        </div>
+    </div>
+
+<!-- Displays all comments for the post being viewed using same Bootstrap format as above-->
+{% for comment in post_comments %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="media g-mb-30 media-comment">
+                    <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="../{{ comment.pfp }}" alt="{{ comment.username }}'s profile picture" width="300" height="300">
+                    <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                      <div class="g-mb-15">
+                        <h5 class="h5 g-color-gray-dark-v1 mb-0"><a href="/profile/{{ comment.user_id }}">{{ comment.username }}</a></h5>
+                        <span class="g-color-gray-dark-v4 g-font-size-12">{{ comment.timestamp }}</span>
+                      </div>
+                      <p>{{ comment.message }}</p>
+
+                      <!-- If the current user made the comment, display a button allowing them to delete the comment-->
+                      {% if comment.del_c_check == True %}
+                      <form action="/delete/comment/{{ comment.comment_id }}" method="post">
+                          <button class="btn btn-primary" type="submit">Delete Comment</button>
+                      </form>
+                      {% endif %}
+                    </div>
+                </div>
+            </div>
+{% endfor %}
+
+<p>
+    Enter your reply below.
+</p>
+<!-- Displays a text area for the user to make a reply -->
+    <form action="/view/{{ id }}" method="post">
+        <div class="mb-3">
+            <textarea autocomplete="off" rows="5" cols="80" autofocus class="form-control mx-auto w-auto" id="reply" name="reply" placeholder="Enter reply here" type="text" size="60"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit Reply</button>
+    </form>
+
+{% endblock %}
